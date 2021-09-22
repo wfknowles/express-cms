@@ -22,12 +22,9 @@ It would make sense to create a starter node package with a base scaffold.
             * setup neccessary middleware
             * setup app/sequelize init
 
-
-## Step 2: Setup Heroku and JawsDB Database
+## Step 2: Setup MySQL Database
     * Install dependencies:
         * run: npm install mysql2 sequelize dotenv
-    * Create Heroku Application
-    * Setup JawsDB Add-On
     * Create '.env' file with vars: DB_NAME, DB_USER, DB_PW
     * Create dev mysql instance
         * run: mysql -u root -p
@@ -35,19 +32,15 @@ It would make sense to create a starter node package with a base scaffold.
     * Setup mysql/sequelize connection
         * create 'connection.js' inside config folder and setup sequelize db connection 
         * create 'schema.sql' inside db folder and define db name
-    * Push to Heroku
-        * run: 
 
-
-## Step 3: Create and test Sequelize Models
+## Step 3: Create Sequelize Models
     * Pseudo-code neccessary objects and routes
     * Install dependencies:
         * run: npm install bcrypt
     * Create 'models' folder and insert files and sequelize initialization
-        * Users
-        * 
-        * 
-        * 
+        * Users: id, username, email, password
+        * Posts: id, title, url, user_id
+        * Comments: id, text, user_id, post_id
         * Create index.js file and define all associations
     * Create and seed db for development and testing
         * run: npm run seed
@@ -61,9 +54,15 @@ It would make sense to create a starter node package with a base scaffold.
     * Install dependencies:
         * run: npm install express-session connect-session-sequelize
 
-## Step 5: Create Front-End Experience
-    * Install dependencies:
-        * run: npm install express-handlebars
+
+
+## Step 6: Push to Heroku
+    * Create Heroku Application
+        * run: heroku create
+    * Setup JawsDB Add-On
+    * Deploy to Heroku
+        * run: git push heroku main
+
 
 
 
@@ -118,31 +117,37 @@ It would make sense to create a starter node package with a base scaffold.
     connect-session-sequelize
 
 ## Models
-Users
-    * username
-    * password
-Posts
-    * created_at
-    * updated_at
-Comments
-    * created_at
+    * Users
+        * id
+        * username
+        * email
+        * password
+    * Posts
+        * id
+        * title
+        * url
+        * user_id
+        * created_at
+        * updated_at
+    * Comments
+        * id
+        * text
+        * user_id
+        * post_id
+        * created_at
+        * updated_at
 
 ## Associations
-Users have many posts
-Users have many comments
-
-Posts have many comments
-Posts belong to users
-
-Comments belong to users
-Comments belong to posts
+    * users have many posts
+    * users have many comments
+    * posts belong to users
+    * posts have many comments
+    * comments belong to users
+    * comments belong to posts
 
 ## Views
-Homepage
-Dashboard
-Login
-
-
-
+    Homepage
+    Dashboard
+    Login
 
 */
