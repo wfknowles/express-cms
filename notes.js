@@ -3,7 +3,7 @@
 ## For a node project with an express server, mysql db, sequelize orm, user authentication, 
 and heroku production environment - here is a good base project map.
 
-It would make sense to create a starter node package with a base scaffold.
+* It would make sense to create a starter node package with a base scaffold *
 
 ## Step 1: Scaffold Application
     * Setup git repo and clone to local machine
@@ -61,12 +61,16 @@ It would make sense to create a starter node package with a base scaffold.
     * Add routes to controllers
         * User: login, logout
 
-## Step 5: Create Front-End
+## Step 5: Setup Template Engine And Views
     * Install dependencies:
         * run: npm install express-handlebars
     * Update server.js
         * require express-handlebars
-        * setup middleware: engine, use
+        * setup handlebars
+    * create views
+        * home, dashboard, single-post, edit-post, login
+        * layout: main
+        * partials: comments, info-post
     
 
 ## Step 6: Push to Heroku
