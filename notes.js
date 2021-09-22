@@ -44,22 +44,36 @@ It would make sense to create a starter node package with a base scaffold.
         * Create index.js file and define all associations
     * Create and seed db for development and testing
         * run: npm run seed
-    * Create 'routes' folder with an 'api' folder containing each model:
-        * files: category-routes.js, product-routes.js, tag-routes.js, product-tag-routes.js
-        * require api routes in index.js
-        * define CRUD routes in each controller file: create, findAll, findOne, update, destroy
-    * Setup folders and files in Insomnia for testing and walk-through video
+
+## Step 4: Create Controllers
+    * Create dashboard-routes.js, home-routes.js, index.js
+    * Create an 'api' folder inside controllers containing each model:
+        * files: index.js, user-routes.js, post-routes.js, comment-routes.js
 
 ## Step 4: Create User Sessions
     * Install dependencies:
         * run: npm install express-session connect-session-sequelize
+    * Update server.js
+        * require express-session and connect-session-sequelize
+        * create and use session object
+        * update '.env' with session secret
+    * Create authentication utility
+    * Add routes to controllers
+        * User: login, logout
 
-
+## Step 5: Create Front-End
+    * Install dependencies:
+        * run: npm install express-handlebars
+    * Update server.js
+        * require express-handlebars
+        * setup middleware: engine, use
+    
 
 ## Step 6: Push to Heroku
     * Create Heroku Application
         * run: heroku create
     * Setup JawsDB Add-On
+    * Add environment vars: SESS_SECRET
     * Deploy to Heroku
         * run: git push heroku main
 
@@ -144,6 +158,19 @@ It would make sense to create a starter node package with a base scaffold.
     * posts have many comments
     * comments belong to users
     * comments belong to posts
+
+## Controllers
+    * Dashboard
+        * root, edit 
+    * Home
+        * root, post, login
+    * API
+        * User
+            * all, single, create, login, logout, update, destroy
+        * Post
+            * all, single, create, update, destroy
+        * Comment
+            * all, create, destroy
 
 ## Views
     Homepage
