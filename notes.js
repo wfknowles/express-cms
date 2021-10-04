@@ -3,7 +3,7 @@
 ## For a node project with an express server, mysql db, sequelize orm, user authentication, 
 and heroku production environment - here is a good base project map.
 
-* It would make sense to create a starter node package with a base scaffold *
+* It could make sense to create a starter node package with a base scaffold *
 
 ## Step 1: Scaffold Application
     * Setup git repo and clone to local machine
@@ -182,3 +182,12 @@ and heroku production environment - here is a good base project map.
     Login
 
 */
+
+                                    const addOns = [
+                                        'Digital Marketer', 'Graphic Designer', 'Photographer', 'Videographer'
+                                    ];
+
+                                    const willKnowles = {
+                                        role: 'Software Engineer',
+                                        addOns: addOns
+                                    };
