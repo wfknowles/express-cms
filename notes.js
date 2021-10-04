@@ -71,15 +71,25 @@ and heroku production environment - here is a good base project map.
         * home, dashboard, single-post, edit-post, login
         * layout: main
         * partials: comments, info-post
-    
 
-## Step 6: Push to Heroku
+## Step 6: Create site-map, connect templates, partials, and data
+    * views:
+        * public
+           * homepage: all posts w/ user w/ comments
+           * post: post w/ user w/  comments
+        * authenticated
+           * dashboard: all posts by user w/ comments
+           * edit: post w/ comments
+
+
+## Step X: Push to Heroku
     * Create Heroku Application
         * run: heroku create
     * Setup JawsDB Add-On
-    * Add environment vars: SESS_SECRET
+    * Add heroku environment vars: SESS_SECRET
     * Deploy to Heroku
-        * run: git push heroku main
+        * run: git push heroku develop:main (OR branch:main)
+        * run: heroku run node seeds/index.js
 
 
 
@@ -182,12 +192,3 @@ and heroku production environment - here is a good base project map.
     Login
 
 */
-
-                                    const addOns = [
-                                        'Digital Marketer', 'Graphic Designer', 'Photographer', 'Videographer'
-                                    ];
-
-                                    const willKnowles = {
-                                        role: 'Software Engineer',
-                                        addOns: addOns
-                                    };
