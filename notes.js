@@ -72,7 +72,7 @@ and heroku production environment - here is a good base project map.
         * layout: main
         * partials: comments, info-post
 
-## Step 6: Create site-map, connect templates, partials, and data
+## Step 6: Create and connect front-end assets
     * views:
         * public
            * homepage: all posts w/ user w/ comments
