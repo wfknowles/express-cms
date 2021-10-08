@@ -1,0 +1,44 @@
+<!-- register -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-wrapper form-mini text-center">
+                <form class="register">
+                    <h1 class="h3 mb-3">Sign Up</h1>
+                    <span class="divider text-muted pb-3"></span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="user-name" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="user-email" placeholder="Email Address" aria-describedby="user-email-help">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="user-password" placeholder="Password" aria-describedby="user-password-help" pattern="^(?=.*\d)(?=.*[a-zA-z0-9?=.*|:<>{}`';@&$]).{8,16}$" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="user-password-check" placeholder="Confirm Password" aria-describedby="user-password-help" pattern="^(?=.*\d)(?=.*[a-zA-z0-9?=.*|:<>{}`';@&$]).{8,16}$" required>
+                    </div>
+                    <div class="form-group">
+                        <small id="user-password-help" class="form-text text-muted">
+                            <strong>Password Requirements:</strong><br>
+                            <span id="req-lower">* must contain at least 1 lowercase character</span><br>
+                            <span id="req-upper">* must contain at least 1 uppercase character</span><br>
+                            <span id="req-special">* must contain at least 1 special character</span><br>
+                            <span id="req-length">* must be between 8 and 16 characters in length</span><br>
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                    <a class="btn btn-secondary btn-lg btn-block" href="/login">Login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/register.js"></script>
+
+<!-- no html in js -->
+<div class="hidden">
+    <div class="valid-feedback"></div>
+</div>
