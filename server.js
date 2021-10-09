@@ -12,7 +12,10 @@ const helpers = require('./utils/helpers');
 
 const sess = {
     secret: process.env.SESS_SECRET,
-    cookie: {},
+    cookie: {
+      expires: new Date(Date.now() + 3600000),
+      maxAge: 3600000
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({

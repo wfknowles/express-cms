@@ -1,3 +1,13 @@
+:root {
+    --custom-green: #11dd3f;
+    --custom-light: rgba(0,0,0,0.1);
+}
+
+main {
+    background-color: rgba(0,0,0,0.03);
+}
+
+/* Dividers */
 .divider {
     display: block;
     margin: 5px auto;
@@ -6,10 +16,35 @@
     border-top: 1px solid rgba(0,0,0,1.0);
 }
 
+.divider.divider-xl {
+    width: 90%;
+}
+
+.divider.divider-lg {
+    width: 80%;
+}
+
+.divider.divider-md {
+    width: 70%;
+}
+
+.divider.divider-sm {
+    width: 60%;
+}
+
+.divider.divider-xs {
+    width: 50%;
+}
+
+.divider.divider-light {
+    border-color: rgba(0,0,0,0.1);
+}
+
 .divider.text-muted {
     border-color: #6c757d !important;
 }
 
+/* login, registration forms */
 .form-wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -23,9 +58,77 @@
     width: 80%;
 }
 
+/* Buttons */
+.btn.btn-green  {
+    color:  #11dd3f;
+    border-color:  #11dd3f;
+}
+
+.btn.btn-green:hover  {
+    border-color:  var(--custom-green);
+    background-color:  var(--custom-green);
+}
+
+/* Post */
+
+.post {
+    background-color: rgba(255,255,255,1.0);
+    padding: 0 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.post .body textarea {
+    display: block;
+    width: 100%;
+}
+
+.post .feature-image img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.post .comment {
+    /* padding: 4px 8px;
+    margin: 4px 0; */
+    border: 1px solid var(--custom-light);
+    border-radius: 4px;
+}
+
+.comment .signature {
+    /* color: red !important; */
+    margin-left: auto !important;
+}
+
+/* Comment */
+
+#add-comment i {
+    color: var(--custom-green);
+}
+
+.textarea {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+  }
+  
+  .textarea[contenteditable]:empty::before {
+    content: "Placeholder still possible";
+    color: gray;
+  }
+
+
 /* MEDIA QUERY FOR TABLETS AND LARGER */
 @media screen and (min-width: 768px) {
     .form-wrapper.form-mini {
         width: 50%;
+    }
+
+    .btn.btn-login {
+        margin-left: 16px;
     }
 }

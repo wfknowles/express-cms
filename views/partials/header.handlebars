@@ -8,6 +8,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
+                    {{#unless (isHomeOrDashboard @exphbs.view)}}
+                        <li class="nav-item">
+                            {{{ anchorEl (ternaryOp loggedIn "Dashboard" "Home") (relativePath (ternaryOp loggedIn "dashboard" "")) 'class="nav-link"' }}}
+                        </li>
+                    {{/unless}}
+                            
                     {{#if loggedIn}}
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">Dashboard</a>
@@ -17,10 +23,10 @@
                         </li>
                     {{else}}
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Log In</a>
+                            <a class="nav-link" href="/register">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">Sign Up</a>
+                            <a class="btn btn-outline-success btn-green btn-login" href="/login">Log In</a>
                         </li>
                     {{/if}}
                 </ul>

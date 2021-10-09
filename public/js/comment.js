@@ -37,6 +37,14 @@ $(document).on('submit', '.comment-form', function(e) {
       });
 });
 
+// resize textareas
+$(document).on('input', '.textarea', function(e) {
+    const height = e.target.scrollHeight;
+    console.log('height', height);
+    $(e.target).css({'height': `${height}px`});
+    // console.log('height', height);
+  });
+
 
 
 
