@@ -1,17 +1,18 @@
-const addComment = () => {
+const addComment = (post_id) => {
     return new Promise((resolve, reject) => {
         //new comment
-        const comment_text = $('textarea[name="comment-body"]').val().trim();
-        const post_id = window.location.toString().split('/')[
-            window.location.toString().split('/').length - 1
-        ];
+        const content = $('#new-comment-content').val().trim();
+        const user_id = $('#new-comment-user-id').val().trim();
+
+        console.log('addComment', content, user_id);
 
         // POST comment
         fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({
-                post_id,
-                comment_text
+                content: content,
+                user_id: user_id,
+                post_id: post_id
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -21,20 +22,46 @@ const addComment = () => {
                 resolve(dbCommentData)
             })
             .catch(err => {
-                // console.log('addPost[Error]', err);
-                alert(err.response.statusText);
+                console.log(err);
                 reject(err);
             })
     });
 }
 
-$(document).on('submit', '.comment-form', function(e) {
+const getCommentForm = (post_id) => {
+    return new Promise((resolve, reject) => {
+        // GET partial for comment
+        fetch(`/dashboard/comment/${post_id}`)
+            // .then(response => response.json())
+            .then(newCommentEl => {
+                resolve(newCommentEl);
+            })
+            .catch(err => {
+                console.log(err);
+                reject(err);
+            })
+    });
+}
+
+// comment submission
+$(document).on('submit', '[id^=new-comment-]', function(e) {
   e.preventDefault();
-  addComment()
+  const id = this.id.split('-').pop();
+  addComment(id)
       .then(() => {
           // reload page
           document.location.reload();
       });
+});
+
+// add comment
+$(document).on('click', '[id^=add-comment-]', function(e) {
+    const id = this.id.split('-').pop();
+    getCommentForm(id)
+        .then(response => response.text())
+        .then(html => {
+            $(`#comment-anchor-${id}`).html(html);
+        });
 });
 
 // resize textareas
@@ -43,7 +70,7 @@ $(document).on('input', '.textarea', function(e) {
     console.log('height', height);
     $(e.target).css({'height': `${height}px`});
     // console.log('height', height);
-  });
+});
 
 
 

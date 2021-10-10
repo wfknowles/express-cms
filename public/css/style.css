@@ -65,6 +65,7 @@ main {
 }
 
 .btn.btn-green:hover  {
+    color: white;
     border-color:  var(--custom-green);
     background-color:  var(--custom-green);
 }
@@ -103,7 +104,7 @@ main {
 
 /* Comment */
 
-#add-comment i {
+a > .fa-custom-green {
     color: var(--custom-green);
 }
 

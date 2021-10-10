@@ -6,24 +6,18 @@ const { Post, User, Comment } = require('../models');
 router.get('/', (req, res) => {
     // console.log('======================');
     Post.findAll({
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at'
-        ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'content', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['id', 'username']
                 }
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['id', 'username']
             }
         ]
     })
@@ -32,7 +26,11 @@ router.get('/', (req, res) => {
 
         res.render('home', {
             posts,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            currentUser: {
+                id: req.session.user_id,
+                username: req.session.username
+            }
         });
     })
     .catch(err => {
@@ -47,16 +45,10 @@ router.get('/post/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at'
-        ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'content', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']

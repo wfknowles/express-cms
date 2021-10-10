@@ -3,53 +3,53 @@ const { User, Post } = require('../models');
 
 const userdata = [
   {
-    username: 'alesmonde0',
-    email: 'nwestnedge0@cbc.ca',
+    username: 'harrykane',
+    email: 'harry@spurs.com',
     password: 'password123'
   },
   {
-    username: 'jwilloughway1',
-    email: 'rmebes1@sogou.com',
+    username: 'jamievardy',
+    email: 'jvardy@gmail.com',
     password: 'password123'
   },
   {
-    username: 'iboddam2',
-    email: 'cstoneman2@last.fm',
+    username: 'mosalah',
+    email: 'mosalah@reds.com',
     password: 'password123'
   },
   {
-    username: 'dstanmer3',
-    email: 'ihellier3@goo.ne.jp',
+    username: 'leomessi',
+    email: 'goat@soccer.com',
     password: 'password123'
   },
   {
-    username: 'djiri4',
-    email: 'gmidgley4@weather.com',
+    username: 'coutinho',
+    email: 'phillipe@barca.com',
     password: 'password123'
   },
   {
-    username: 'msprague5',
-    email: 'larnout5@imdb.com',
+    username: 'giniwijnaldum',
+    email: 'gini@psg.com',
     password: 'password123'
   },
   {
-    username: 'mpergens6',
-    email: 'hnapleton6@feedburner.com',
+    username: 'heungminson',
+    email: 'hms@spurs.com',
     password: 'password123'
   },
   {
-    username: 'tpenniell7',
-    email: 'kperigo7@china.com.cn',
+    username: 'locelso',
+    email: 'locelso@spurs.com',
     password: 'password123'
   },
   {
-    username: 'msabbins8',
-    email: 'lmongain8@google.ru',
+    username: 'hendo',
+    email: 'jhenderson@reds.com',
     password: 'password123'
   },
   {
-    username: 'jmacarthur9',
-    email: 'bsteen9@epa.gov',
+    username: 'jurgenklopp',
+    email: 'heavymetalfootie@reds.com',
     password: 'password123'
   }
 ];

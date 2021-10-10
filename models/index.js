@@ -10,14 +10,12 @@ User.hasMany(Post, {
 
 // user has many comments
 User.hasMany(Comment, {
-    foreignKey: 'user_id',
-    onDelete: 'SET NULL'
+    foreignKey: 'user_id'
 });
 
 // posts belong to users
 Post.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'SET NULL'
+    foreignKey: 'user_id'
 });
 
 // posts have many comments
@@ -27,16 +25,12 @@ Post.hasMany(Comment, {
 
 // comments belong to users
 Comment.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'SET NULL'
+    foreignKey: 'user_id'
 });
 
 // comments belong to posts
 Comment.belongsTo(Post, {
-    foreignKey: 'post_id',
-    onDelete: 'SET NULL'
+    foreignKey: 'post_id'
 });
-
-
 
 module.exports = { User, Post, Comment };

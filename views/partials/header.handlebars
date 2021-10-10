@@ -3,25 +3,32 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/">Tech Blog</a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    {{#unless (isHomeOrDashboard @exphbs.view)}}
+
+                    {{#unless (isHome @exphbs.view)}}
                         <li class="nav-item">
-                            {{{ anchorEl (ternaryOp loggedIn "Dashboard" "Home") (relativePath (ternaryOp loggedIn "dashboard" "")) 'class="nav-link"' }}}
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                     {{/unless}}
-                            
+                    
                     {{#if loggedIn}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
+                        {{!-- authenticated --}}
+                        {{#unless (isDashboard @exphbs.view)}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                        {{/unless}}
                         <li class="nav-item">
                             <a class="nav-link" id="logout">Log Out</a>
                         </li>
+
                     {{else}}
+                        {{!-- public --}}
                         <li class="nav-item">
                             <a class="nav-link" href="/register">Sign Up</a>
                         </li>

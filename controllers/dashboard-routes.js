@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
+const path = require('path');
 
 // authentication
 const authentication = require('../utils/auth');
@@ -11,30 +12,31 @@ router.get('/', authentication, (req, res) => {
         where: {
             user_id: req.session.user_id
         },
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at'
-        ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'content', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['id', 'username']
                 }
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['id', 'username']
             }
         ]
     })
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        res.render('dashboard', { 
+            posts, 
+            loggedIn: req.session.loggedIn,
+            currentUser: {
+                id: req.session.user_id,
+                username: req.session.username
+            }
+        });
     })
     .catch(err => {
         console.log(err);
@@ -45,34 +47,31 @@ router.get('/', authentication, (req, res) => {
 // edit
 router.get('/edit/:id', authentication, (req, res) => {
     Post.findByPk(req.params.id, {
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at'
-        ],
         include: [
         {
             model: Comment,
-            attributes: ['id', 'text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'content', 'post_id', 'user_id', 'created_at'],
             include: {
                 model: User,
-                attributes: ['username']
+                attributes: ['id', 'username']
             }
         },
         {
             model: User,
-            attributes: ['username']
+            attributes: ['id', 'username']
         }
         ]
     })
     .then(dbPostData => {
         if (dbPostData) {
             const post = dbPostData.get({ plain: true });
-            
             res.render('edit-post', {
                 post,
-                loggedIn: true
+                loggedIn: req.session.loggedIn,
+                currentUser: {
+                    id: req.session.user_id,
+                    username: req.session.username
+                }
             });
         } else {
             res.status(404).end();
@@ -81,6 +80,14 @@ router.get('/edit/:id', authentication, (req, res) => {
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
+    });
+});
+
+// comment
+router.get('/comment/:id', authentication, (req, res) => {
+    res.render('partials/new-comment', {
+        layout: false,
+        post_id: req.params.id
     });
 });
 
