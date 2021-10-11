@@ -3,6 +3,7 @@ tinymce.init({
     selector: '#post-content'
 });
 
+
 const submitPost = () => {
     return new Promise((resolve, reject) => {
         let fetchMethod, fetchUrl;

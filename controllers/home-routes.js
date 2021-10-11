@@ -4,7 +4,6 @@ const { Post, User, Comment } = require('../models');
 
 // root
 router.get('/', (req, res) => {
-    // console.log('======================');
     Post.findAll({
         include: [
             {
@@ -23,8 +22,6 @@ router.get('/', (req, res) => {
     })
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-
-        console.log('\nserverLog[ post_count ]', posts.length);
 
         res.render('home', {
             posts,

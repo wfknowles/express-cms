@@ -1,9 +1,20 @@
-# tech-blog
+# Tech Blog
 
-# Features
-* User Authentication
-* TinyMCE Editor
+## Description
+A web application to power a personal or professional blog OR a starter application for a more extensive record database.
+
+## Features
+* Node.js
+* Express.js
+* mySql Database
+* Sequelize ORM
 * Handlebars Templating
+* User Authentication
+* Session Expiration
+* Public and Authenticated Routing
+* Users, Posts, and Comments can be created, edited, and deleted.
+* New User Password Feedback
+* WYSIWYG Post Editor
 * Bootstrap 4
 * Font Awesome
 
@@ -12,7 +23,7 @@
 * [font-awesome 4](https://www.npmjs.com/package/font-awesome)
 * [bootstrap 4](https://www.npmjs.com/package/bootstrap/)
 
-# Dependencies
+## Dependencies
 * [express](https://npmjs.com/package/express)
 * [express-session](https://npmjs.com/package/express-session)
 * [express-handlebars](https://npmjs.com/package/express-handlebars)
@@ -21,4 +32,42 @@
 * [sequelize](https://npmjs.com/package/sequelize)
 * [bcrypt](https://npmjs.com/package/bcrypt)
 * [dotenv](https://npmjs.com/package/dotenv)
+
+## Installation
+Clone the project to your local machine:
+```git clone https://github.com/wfknowles/tech-blog.git```
+
+Install dependencies:
+```npm install```
+
+Open MySQL and source schema:
+``` 
+mysql -u root -p
+source db/schema.sql
+
+```
+
+Seed database:
+```npm run seed```
+
+Start application:
+```npm start```
+
+Development start application:
+```npm run watch```
+
+## Future Improvements
+* User Roles
+* User Permissions
+* Admin Panel
+* Custom Objects
+
+## Contribution
+Made with ❤️ by Will Knowles
+
+## Questions
+Github: https://github.com/wfknowles/
+Email: will@willknowles.com 
+
+©️2021
 

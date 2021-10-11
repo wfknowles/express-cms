@@ -91,6 +91,13 @@ and heroku production environment - here is a good base project map.
         * run: git push heroku develop:main (OR branch:main)
         * run: heroku run node seeds/index.js
 
+## Improvements
+User Roles
+User Permissions
+Admin Panel
+Frontend Custom Object Creation
+Verify CRUD actions for all objects
+
 
 
 

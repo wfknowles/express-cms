@@ -8,7 +8,7 @@ module.exports = {
     },
     serverLog: (label, obj) => {
         console.log(`\nserverLog[ ${label} ]:`, obj, '\n');
-        return;
+        return obj;
     },
     isHome: view => {
         if (view == 'home') {
@@ -60,7 +60,6 @@ module.exports = {
 
         // return html string
         return options.fn(context);
-
     },
     eachWithSession: (context, options) => {
 
@@ -112,10 +111,6 @@ module.exports = {
             return 's';
         }
         return '';
-    },
-    inspect: obj => {
-        console.log('serverLog[ inspect ]', obj);
-        return obj;
     }
 
 };
