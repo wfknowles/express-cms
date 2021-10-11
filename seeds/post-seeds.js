@@ -11,8 +11,8 @@ const postdata = [
     user_id: 10
   },
   {
-    title: 'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1600',
-    feature_image: 'https://placehold.co/1600x900',
+    title: 'Donec dapibus.',
+    feature_image: 'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1600',
     content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam itaque ipsa nostrum nisi magni delectus vel accusantium! 
     Deserunt consequatur tempora nihil! Corrupti eaque sed iusto? Explicabo blanditiis temporibus quo aspernatur? Lorem 
     ipsum dolor sit amet consectetur adipisicing elit. Nam itaque ipsa nostrum nisi magni delectus vel accusantium! 
