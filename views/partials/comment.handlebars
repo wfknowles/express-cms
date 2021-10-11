@@ -1,8 +1,13 @@
 <!-- comment -->
-<div class="row">
-    <div class="col-md-12 comment p-4 mb-2">
-        <p>{{this.content}}</p>
+<div class="row comment p-3 mb-2">
+    <div class="col-md-10  ">
+        <p class="pb-0 mb-0">{{this.content}}</p>
         <small><strong>{{this.user.username}}</strong>  -  <em>{{this.created_at}}</em></small>
+    </div>
+    <div class="col-md-2 d-flex justify-content-end align-items-center">
+        {{#if (isUsers @session.currentUser.id this.user.id)}}
+            <button id="delete-comment-{{this.id}}" class="btn btn-outline-danger">Delete</button>
+        {{/if }}
     </div>
 </div>
 

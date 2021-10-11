@@ -44,6 +44,17 @@ router.get('/', authentication, (req, res) => {
     });
 });
 
+// render new-comment partial
+router.get('/post', authentication, (req, res) => {
+    res.render('post-form', {
+        loggedIn: req.session.loggedIn,
+        currentUser: {
+            id: req.session.user_id,
+            username: req.session.username
+        }
+    });
+});
+
 // edit
 router.get('/edit/:id', authentication, (req, res) => {
     Post.findByPk(req.params.id, {
@@ -65,7 +76,7 @@ router.get('/edit/:id', authentication, (req, res) => {
     .then(dbPostData => {
         if (dbPostData) {
             const post = dbPostData.get({ plain: true });
-            res.render('edit-post', {
+            res.render('post-form', {
                 post,
                 loggedIn: req.session.loggedIn,
                 currentUser: {
@@ -83,7 +94,7 @@ router.get('/edit/:id', authentication, (req, res) => {
     });
 });
 
-// comment
+// render new-comment partial
 router.get('/comment/:id', authentication, (req, res) => {
     res.render('partials/new-comment', {
         layout: false,

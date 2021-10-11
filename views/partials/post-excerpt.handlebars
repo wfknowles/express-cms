@@ -1,0 +1,69 @@
+<div class="row post pb-4 mb-4" id="post-{{this.id}}">
+    <div class="col-md-12">
+        <div class="row timestamp">
+            <div class="col-md-12 d-flex text-muted justify-content-end align-items-center p-2 pr-3">
+                <small><em>Updated At: {{ this.updatedAt }} | {{this.user.username}}</em></small>
+            </div>
+        </div>
+        <div class="row feature-image">
+            <div class="col-md-12">
+                <img src="{{this.feature_image}}" alt=""/>
+            </div>
+        </div>
+        <!-- title -->
+        <div class="row title mx-1">
+            <div class="col-md-9 d-flex justify-content-start align-items-center">
+                <h2>{{this.title}}</h2>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-items-center">
+                {{#if (isUsers @session.currentUser.id this.user.id)}}
+                    <a class="btn btn-sm btn-outline-secondary btn-edit ml-3 px-3" href="/dashboard/edit/{{this.id}}">Edit</a>
+                    <button id="delete-post-{{this.id}}" class="btn btn-sm btn-outline-danger ml-3 px-3">Delete</a>
+                {{/if}}
+            </div>
+        </div>
+        <!-- body -->
+        <div class="row body mx-1">
+            <div class="col-md-12">
+                <p>
+                    {{{getExcerpt this.content}}}
+                    <a href="/post/{{this.id}}">read more</a>
+                </p>
+                
+            </div>
+        </div>
+        
+        <!-- comments -->
+        <div class="d-none" id="comments-wrapper-{{this.id}}">
+            <div class="divider divider-lg divider-light my-3"></div>
+            <div id="comment-anchor-{{this.id}}"></div>
+            <div class="row comments mx-3 mt-4">
+                <div class="col-md-12 comments-header">
+                    <div class="row pb-3">
+                        <div class="col-md-12 d-flex justify-content-start align-items-center">
+                            <h3>Comments</h3>
+                            {{#if @session.loggedIn }}
+                                <a id="add-comment-{{this.id}}" class="pl-3">
+                                    <i class="fa fa-plus-circle fa-3x"></i>
+                                </a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    {{#eachWithSession this.comments session=@session}}
+                        {{> comment }}
+                    {{/eachWithSession}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row body mx-1">
+            <div class="col-md-12">
+                {{#if (isEmpty this.comments)}}
+                    <button id="view-comments-{{this.id}}" class="btn btn-outline-secondary btn-block">View {{getCount this.comments}} Comment{{pluralize this.comments}}</button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

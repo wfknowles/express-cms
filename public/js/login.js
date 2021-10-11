@@ -30,6 +30,6 @@ $(document).on('submit', 'form.login', function(e) {
     logIn()
         .then(() => {
             // redirect to dashboard
-            document.location.replace('/dashboard');
+            location.replace('/dashboard');
         });
 });

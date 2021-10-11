@@ -4,6 +4,8 @@
             <div class="col-md-12 d-flex text-muted justify-content-end align-items-center p-2 pr-3">
                 <small><em>Updated At: {{ this.updatedAt }} | {{this.user.username}}</em></small>
             </div>
+            {{!-- {{logger 'data' data}}
+            {{logger 'post' this}} --}}
         </div>
         <div class="row feature-image">
             <div class="col-md-12">
@@ -22,7 +24,7 @@
         <!-- body -->
         <div class="row body mx-1">
             <div class="col-md-12">
-                <p>{{this.content}}</p>
+                <p>{{{this.content}}}</p>
             </div>
         </div>
         <div class="divider divider-lg divider-light my-3"></div>
@@ -42,9 +44,9 @@
                 </div>
             </div>
             <div class="col-md-12 comments-wrapper">
-                {{#each this.comments}}
+                {{#eachWith this.comments data=data}}
                     {{> comment }}
-                {{/each}}
+                {{/eachWith}}
             </div>
         </div>
     </div>

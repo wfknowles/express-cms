@@ -4,8 +4,6 @@ const addComment = (post_id) => {
         const content = $('#new-comment-content').val().trim();
         const user_id = $('#new-comment-user-id').val().trim();
 
-        console.log('addComment', content, user_id);
-
         // POST comment
         fetch('/api/comments', {
             method: 'POST',
@@ -17,6 +15,22 @@ const addComment = (post_id) => {
             headers: {
                 'Content-Type': 'application/json'
             }
+        })
+            .then(dbCommentData => {
+                resolve(dbCommentData)
+            })
+            .catch(err => {
+                console.log(err);
+                reject(err);
+            })
+    });
+}
+
+const destroyComment = (id) => {
+    return new Promise((resolve, reject) => {
+        // POST comment
+        fetch(`/api/comments/${id}`, {
+            method: 'DELETE',
         })
             .then(dbCommentData => {
                 resolve(dbCommentData)
@@ -62,6 +76,23 @@ $(document).on('click', '[id^=add-comment-]', function(e) {
         .then(html => {
             $(`#comment-anchor-${id}`).html(html);
         });
+});
+
+// delete comment
+$(document).on('click', '[id^=delete-comment-]', function(e) {
+    const id = this.id.split('-').pop();
+    destroyComment(id)
+        .then(() => {
+            document.location.reload();
+        });
+});
+
+// view comments
+$(document).on('click', '[id^=view-comments-]', function(e) {
+    const id = this.id.split('-').pop();
+    console.log('view comments!', id);
+    $(`#comments-wrapper-${id}`).removeClass('d-none');
+    $(`#view-comments-${id}`).hide();
 });
 
 // resize textareas

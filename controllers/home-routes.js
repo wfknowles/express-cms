@@ -24,6 +24,8 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
 
+        console.log('\nserverLog[ post_count ]', posts.length);
+
         res.render('home', {
             posts,
             loggedIn: req.session.loggedIn,
@@ -51,12 +53,12 @@ router.get('/post/:id', (req, res) => {
                 attributes: ['id', 'content', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['id', 'username']
                 }
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['id', 'username']
             }
         ]
     })
@@ -70,7 +72,11 @@ router.get('/post/:id', (req, res) => {
 
         res.render('single-post', {
             post,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            currentUser: {
+                id: req.session.user_id,
+                username: req.session.username
+            }
         });
     })
     .catch(err => {

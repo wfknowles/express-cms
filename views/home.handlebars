@@ -2,9 +2,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 posts-wrapper">
-            {{#eachWith posts data=this}}
-                {{> post }}
-            {{/eachWith}}
+            {{#eachWithSession posts session=this}}
+                {{> post-excerpt }}
+            {{/eachWithSession}}
         </div>
     </div>
 </div>

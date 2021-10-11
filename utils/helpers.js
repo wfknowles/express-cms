@@ -6,8 +6,8 @@ module.exports = {
     isSame: (value1, value2) => {
         return value1 === value2;
     },
-    logger: (label, obj) => {
-        console.log(`\nlogger[${label}]`, obj, '\n');
+    serverLog: (label, obj) => {
+        console.log(`\nserverLog[ ${label} ]:`, obj, '\n');
         return;
     },
     isHome: view => {
@@ -48,59 +48,40 @@ module.exports = {
     relativePath: (string) => {
         return `/${string}`;
     },
-    eachWith: (array, options) => {
-        let contentString = "";
-        let eachArray = [];
-
-        // iterate over array and push to eachArray
-        for (const object of array) {
-            eachArray.push(object);
-        };
-
-        if ( eachArray && eachArray.length > 0 ) {
-            // iterate over eachArray
-            for (const [i, obj] in eachArray) {
-
-                // add option to object and add to return string
-                for (const [k, v] of Object.entries(options.hash)) {
-                    // set options to data object
-                    eachArray[i][k] = v;
-                    // add options to contentString
-                    contentString = contentString + options.fn(eachArray[i]);
-                }
-            }
-        } else {
-            contentString = options.inverse(this);
+    setSession: (context, options) => {
+        // create @session object
+        const session = {
+            loggedIn: options.hash.session.loggedIn,
+            currentUser: options.hash.session.currentUser
         }
 
-        return contentString;
+        // add to template data
+        options.data['session'] = session;
+
+        // return html string
+        return options.fn(context);
+
     },
-    setContext: (options) => {
-        let contentString = "";
-        let eachArray = [];
+    eachWithSession: (context, options) => {
 
-        // iterate over array and push to eachArray
-        for (const object of array) {
-            eachArray.push(object);
-        };
+        // initialize html string
+        let htmlString = "";
 
-        if ( eachArray && eachArray.length > 0 ) {
-            // iterate over eachArray
-            for (const [i, obj] in eachArray) {
-
-                // add option to object and add to return string
-                for (const [k, v] of Object.entries(options.hash)) {
-                    // set options to data object
-                    eachArray[i][k] = v;
-                    // add options to contentString
-                    contentString = contentString + options.fn(eachArray[i]);
-                }
-            }
-        } else {
-            contentString = options.inverse(this);
+        // create @session object
+        const session = {
+            loggedIn: options.hash.session.loggedIn,
+            currentUser: options.hash.session.currentUser
         }
 
-        return contentString;
+        // add to template data
+        options.data['session'] = session;
+
+        // build htmlString
+        for (const object of context) {
+            htmlString += options.fn(object);
+        }
+
+        return htmlString;
     },
     isCurrentUser: (currentUserId, id) => {
         if (currentUserId == id) {
@@ -113,6 +94,28 @@ module.exports = {
             return true;
         }
         return false;
+    },
+    isEmpty: obj => {
+        if (obj.length > 0) {
+            return true;
+        }
+        return false;
+    },
+    getExcerpt: text => { 
+        return `${text.replace(/(<([^>]+)>)/gi, "").substring(0, 296)} ...`;
+    },
+    getCount: obj => {
+        return obj.length;
+    },
+    pluralize: obj => {
+        if (obj.length > 1) {
+            return 's';
+        }
+        return '';
+    },
+    inspect: obj => {
+        console.log('serverLog[ inspect ]', obj);
+        return obj;
     }
 
 };
