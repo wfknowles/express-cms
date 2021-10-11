@@ -1,5 +1,7 @@
 # Tech Blog
 
+<img width="1169" alt="Screen Shot 2021-10-11 at 12 06 50 AM" src="https://user-images.githubusercontent.com/23103606/136828254-b3134be4-14e8-4405-a08d-ca65aba49004.png">
+
 ## Description
 A web application to power a personal or professional blog OR a starter application for a more extensive record database.
 
@@ -61,6 +63,7 @@ Development start application:
 * User Permissions
 * Admin Panel
 * Custom Objects
+* Post Feed Pagination
 
 ## Questions
 Github: https://github.com/wfknowles/
