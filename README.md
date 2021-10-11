@@ -10,6 +10,7 @@ A web application to power a personal or professional blog OR a starter applicat
 * Sequelize ORM
 * Handlebars Templating
 * User Authentication
+* Password Encryption
 * Session Expiration
 * Public and Authenticated Routing
 * Users, Posts, and Comments can be created, edited, and deleted.
@@ -44,7 +45,6 @@ Open MySQL and source schema:
 ``` 
 mysql -u root -p
 source db/schema.sql
-
 ```
 
 Seed database:
@@ -62,12 +62,12 @@ Development start application:
 * Admin Panel
 * Custom Objects
 
-## Contribution
-Made with ❤️ by Will Knowles
-
 ## Questions
 Github: https://github.com/wfknowles/
-Email: will@willknowles.com 
 
+Email: will@willknowles.com
+
+## Contribution
+Made with ❤️ by Will Knowles
 ©️2021
 
