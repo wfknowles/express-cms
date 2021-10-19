@@ -66,7 +66,9 @@ Development start application:
 * Admin Panel
 * Custom Objects
 * Post Feed Pagination
-* 
+* Webpack
+* Media Uploader/Google Drive Integration
+* Update routes/controllers with more abstraction
 
 ## Questions
 Github: https://github.com/wfknowles/
