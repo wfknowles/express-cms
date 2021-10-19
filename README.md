@@ -2,6 +2,8 @@
 
 <img width="1169" alt="Screen Shot 2021-10-11 at 12 06 50 AM" src="https://user-images.githubusercontent.com/23103606/136828254-b3134be4-14e8-4405-a08d-ca65aba49004.png">
 
+[Live Demo](https://damp-ridge-39665.herokuapp.com/)
+
 ## Description
 A content management system to power a personal or professional website.
 
