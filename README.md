@@ -1,4 +1,4 @@
-# Tech Blog
+# Express CMS
 
 <img width="1169" alt="Screen Shot 2021-10-11 at 12 06 50 AM" src="https://user-images.githubusercontent.com/23103606/136828254-b3134be4-14e8-4405-a08d-ca65aba49004.png">
 
@@ -19,7 +19,7 @@ A content management system to power a personal or professional website.
 * Public and Authenticated Routing
 * Users, Posts, and Comments can be created, edited, and deleted.
 * New User Password Feedback
-* WYSIWYG Post Editor
+* tinyMCE Post Editor
 * Bootstrap 4
 * Font Awesome
 
