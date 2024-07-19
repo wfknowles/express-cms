@@ -40,7 +40,7 @@ A content management system to power a personal or professional website.
 
 ## Installation
 Clone the project to your local machine:
-```git clone https://github.com/wfknowles/tech-blog.git```
+```git clone https://github.com/wfknowles/express-cms.git```
 
 Install dependencies:
 ```npm install```
